@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main  # o master, dipende da come si chiama il tuo branch principale
+    paths-ignore:
+      - "pokemon_list.json"
+
+permissions:
+  contents: write   # <--- Fornisce i permessi di push al bot
 
 jobs:
   build:
@@ -12,6 +17,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}   # usa il token della Action
 
       - name: Set up Python
         uses: actions/setup-python@v5

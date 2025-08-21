@@ -3,7 +3,7 @@ import requests
 import json 
 
 #%% 
-POKEMON_LIMIT = 10000
+POKEMON_LIMIT = 10
 FILENAME = 'pokemon_list.json'
 
 pokemon_list = requests.get(f'https://pokeapi.co/api/v2/pokemon-species?limit={POKEMON_LIMIT}')

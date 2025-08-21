@@ -39,7 +39,7 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add pokemon_list.json
           git commit -m "Update JSON [skip ci]" || echo "No changes to commit"
-          git push
+          git push origin main
 
       - name: Create release with tag
         uses: softprops/action-gh-release@v1

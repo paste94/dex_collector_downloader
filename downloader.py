@@ -1,5 +1,4 @@
 #%%
-# import pokebase as pb
 import requests
 import json 
 

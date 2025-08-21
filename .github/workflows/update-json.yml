@@ -15,10 +15,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}   # usa il token della Action
+      # - name: Checkout repo
+      #   uses: actions/checkout@v4
+      #   with:
+      #     ref: main
+      #     token: ${{ secrets.GITHUB_TOKEN }}   # usa il token della Action
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -33,13 +34,13 @@ jobs:
         run: |
           python downloader.py
 
-      - name: Commit and push generated JSON
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add pokemon_list.json
-          git commit -m "Update JSON [skip ci]" || echo "No changes to commit"
-          git push origin main
+      # - name: Commit and push generated JSON
+      #   run: |
+      #     git config --global user.name "github-actions[bot]"
+      #     git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      #     git add pokemon_list.json
+      #     git commit -m "Update JSON [skip ci]" || echo "No changes to commit"
+      #     git push origin main
 
       - name: Create release with tag
         uses: softprops/action-gh-release@v1

@@ -2,8 +2,8 @@ name: Update JSON
 
 on:
   push:
-    branches:
-      - main  # o master, dipende da come si chiama il tuo branch principale
+    tags:
+      - 'v*'  # parte solo se il tag inizia con "v"
     paths-ignore:
       - "pokemon_list.json"
 
@@ -41,10 +41,18 @@ jobs:
           git commit -m "Update JSON [skip ci]" || echo "No changes to commit"
           git push
 
-      - name: Create GitHub Release
+      - name: Create release with tag
         uses: softprops/action-gh-release@v1
         with:
-            files: pokemon_list.json
-            tag_name: latest
+          files: pokemon_list.json
+          tag_name: ${{ github.ref_name }}
         env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update "latest" release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: pokemon_list.json
+          tag_name: latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

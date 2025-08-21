@@ -44,6 +44,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-            files: output.json
+            files: pokemon_list.json
+            tag_name: latest
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -40,3 +40,10 @@ jobs:
           git add pokemon_list.json
           git commit -m "Update JSON [skip ci]" || echo "No changes to commit"
           git push
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+            files: output.json
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

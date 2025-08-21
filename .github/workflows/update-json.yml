@@ -56,7 +56,8 @@ jobs:
           git diff --exit-code pokemon_list.json || echo "changed=true" >> $GITHUB_OUTPUT
 
       - name: Update "latest" release
-        if: steps.json_check.outputs.changed == 'true'
+        # Non crea la release se il file non è cambiato
+        if: steps.json_check.outputs.changed == 'true'   
         uses: softprops/action-gh-release@v1
         with:
           files: pokemon_list.json

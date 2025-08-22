@@ -31,6 +31,7 @@ for specie in species_list:
             'img_shiny': variety['sprites']['front_shiny'],
             'generation': specie['generation']['name'],
             'color': specie['color']['name'],
+            'is_default': variety['is_default'],
         }
         pokemon_list.append(pokemon)
 # %%
